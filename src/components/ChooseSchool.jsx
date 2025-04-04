@@ -7,10 +7,10 @@ const ChooseSchool = () => {
 
     let escolas = { //a escola tem q ter o mesmo nome do ID
         sartre: [
-            <NavLink to={'/sartre/2ano'} key={"1ano"}>2º Ano</NavLink>,
+            <NavLink to={'/CME/sartre/2ano'} key={"1ano"}>2º Ano</NavLink>,
         ],
         escolaTeste: [
-        <NavLink to={'/escola-teste/ano-teste'} key={"1ano"}>Ano Teste</NavLink>,
+        <NavLink to={'/CME/escola-teste/ano-teste'} key={"1ano"}>Ano Teste</NavLink>,
         ],
         sp: [],
         anchieta: [],

@@ -12,9 +12,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<App />} />
-        <Route path='/escola-teste/ano-teste' element={<EscolaTeste />} />
-        <Route path='/sartre/2ano' element={<Sartre2Ano />} />
+        <Route path='/CME' element={<App />} />
+        <Route path='/CME/escola-teste/ano-teste' element={<EscolaTeste />} />
+        <Route path='/CME/sartre/2ano' element={<Sartre2Ano />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
