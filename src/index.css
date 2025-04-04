@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "Chau Philomene One";
+    src: url("./assets/fonts/Chau_Philomene_One/ChauPhilomeneOne-Regular.ttf");
+}
+
+:root {
+    /*default*/
+    --default-header-text-size: 32px;
+    --default-title-size: 26px;
+    --default-subtitle-size: 22px;
+    --default-text-size: 18px;
+    --default-button-text-size: 20px;
+    --default-caption-text-size: 19px;
+    --default-th-text-size: 15px;
+
+    /*computer*/
+    --computer-header-text-size: 42px;
+    --computer-title-size: 36px;
+    --computer-subtitle-size: 28px;
+    --computer-text-size: 25px;
+    --computer-button-text-size: 26px;
+    --computer-caption-text-size: 24px;
+    --computer-th-text-size: 18px;
+}
+
+
+/* mobile horizontal + pc */
+@media (min-width: 840px) {
+    :root {
+        --default-header-text-size: var(--computer-header-text-size);
+        --default-title-size: var(--computer-title-size);
+        --default-subtitle-size: var(--computer-subtitle-size);
+        --default-text-size: var(--computer-text-size);
+        --default-button-text-size: var(--computer-button-text-size);
+        --default-caption-text-size: var(--computer-caption-text-size);
+        --default-th-text-size: var(--computer-th-text-size);
+    }
+    
+}
