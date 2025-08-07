@@ -7,7 +7,9 @@ const ChooseSchool = () => {
 
     let escolas = { //a escola tem q ter o mesmo nome do ID
         sartre: [
-            <NavLink to={'/CME/sartre/2ano'} key={"1ano"}>2º Ano</NavLink>,
+            <NavLink to={'/CME/sartre/1ano'} key={"1ano"}>1º Ano</NavLink>,
+            <NavLink to={'/CME/sartre/2ano'} key={"2ano"}>2º Ano</NavLink>,
+            <NavLink to={'/CME/sartre/highschool'} key={"highschool"}>Highschool</NavLink>,
         ],
         escolaTeste: [
         <NavLink to={'/CME/escola-teste/ano-teste'} key={"1ano"}>Ano Teste</NavLink>,
@@ -36,6 +38,7 @@ const ChooseSchool = () => {
                     <input type="radio" name="schoolButton" id="sartre" defaultChecked />
                     <label htmlFor="sartre">Sartre</label>
 
+                    {/*
                     <input type="radio" name="schoolButton" id="escolaTeste" />
                     <label htmlFor="escolaTeste">Escola Teste</label>
 
@@ -44,6 +47,7 @@ const ChooseSchool = () => {
 
                     <input type="radio" name="schoolButton" id="anchieta" />
                     <label htmlFor="anchieta">Anchieta</label>
+                    */}
                 </div>
             </div>
 

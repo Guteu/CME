@@ -181,9 +181,10 @@ hr {
 }
 
 /* tem que otimizar isso aqui, depois vou fazer um CSS tipo o do soundboard-humanidades */
-@media (max-width: 515px) { 
+@media (max-width: 595px) { 
     .contactsBoxListsBox {
         flex-direction: column;
+        margin-bottom: 15px;
     }
 
     hr {

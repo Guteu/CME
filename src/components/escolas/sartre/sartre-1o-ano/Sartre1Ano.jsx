@@ -8,9 +8,8 @@ import Contacts from '../../../Contacts.jsx';
 import Bimestre1 from './Bimestre1.jsx';
 import Bimestre2 from "./Bimestre2.jsx";
 import Bimestre3 from './Bimestre3.jsx';
-import Teste from './Teste.jsx';
 
-const Sartre2Ano = () => {
+const Sartre1Ano = () => {
     
     const background = {
             backgroundImage: `url(${backgroundImg})`,
@@ -60,4 +59,4 @@ const Sartre2Ano = () => {
     );
 }
 
-export default Sartre2Ano;
+export default Sartre1Ano;
