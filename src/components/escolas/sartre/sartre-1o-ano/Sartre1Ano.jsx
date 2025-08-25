@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useResetSignal } from "../../utils/hooks/useResetSignal.js";
 
 import '../../escolas.css'
 import backgroundImg from '../../../../assets/materiais-escolares-fundo-branco-quadriculado.jpg'
 
+import HomeButton from "../../utils/components/homebutton/HomeButton.jsx";
+import RefreshInputsButton from "../../utils/components/refreshInputsButton/RefreshInputsButton.jsx";
 import Notas from '../Notas.jsx'
 import Contacts from '../../../Contacts.jsx';
 import Bimestre1 from './Bimestre1.jsx';
@@ -20,22 +23,27 @@ const Sartre1Ano = () => {
         }
 
     const [notas, setNotas] = useState({});
+
+    //resetSignal é usado para reiniciar os inputs dos bimestres (ativado ao clicar no botão de reiniciar)
+    const { resetSignal, reiniciarInputs } = useResetSignal();
+    //estado para controlar o bimestre selecionado
+    //0 = bimestre 1, 1 = bimestre 2, 2 = bimestre 3
+    const [semesterIndex, setSemesterIndex] = useState(0);
     
-    //state com o bimestre ativo
-    const [semester, setSemester] = useState(<Bimestre1 setNotas={setNotas} />);
     //array com os bimestres
     const semestersArray = [
-        <Bimestre1 setNotas={setNotas} key={0} />,
-        <Bimestre2 setNotas={setNotas} key={1} />,
-        <Bimestre3 setNotas={setNotas} key={2} />,
+        <Bimestre1 setNotas={setNotas} key={0} resetSignal={resetSignal} />,
+        <Bimestre2 setNotas={setNotas} key={1} resetSignal={resetSignal} />,
+        <Bimestre3 setNotas={setNotas} key={2} resetSignal={resetSignal} />,
     ];
 
     function changeSemester(e) {
-        setSemester(semestersArray[Number(e.target.value)])
+        setSemesterIndex(Number(e.target.value));
     }
 
     return (
         <div style={background}>
+            <HomeButton />
             <main>
                 <section className="semesterBox">
                     <h1>Escolha a Unidade</h1>
@@ -46,8 +54,9 @@ const Sartre1Ano = () => {
                     </select>
                 </section>
                 
+                <RefreshInputsButton onClick={reiniciarInputs} />
 
-                {semester}
+                {semestersArray[semesterIndex]}
 
                 { Object.keys(notas).length != 0 ? <Notas notas={notas} /> : null}
             </main>

@@ -1,0 +1,27 @@
+.refreshInputsButton {
+    display: block;
+    width: 250px;
+    height: 40px;
+    margin: auto;
+    margin-bottom: 15px;
+    background-color: #C6C6C6;
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: outset;
+
+    font-size: calc(var(--default-subtitle-size) + 2px);
+    font-weight: bolder;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    -webkit-text-stroke: 0.7px black;
+}
+
+.refreshInputsButton:hover {
+    background-color: #A9A9A9;
+    cursor: pointer;
+}
+
+.refreshInputsButton:active {
+    background-color: #808080;
+    border-style: inset;
+}

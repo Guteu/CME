@@ -187,6 +187,10 @@ hr {
         margin-bottom: 15px;
     }
 
+    .contactsBoxListsBox li {
+        margin-bottom: 3px;
+    }
+
     hr {
         min-height: 0.1px;
         width: 120px;

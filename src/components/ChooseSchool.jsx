@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
+import routes from "../../src/routes";
 
 const ChooseSchool = () => {
 
@@ -7,12 +8,12 @@ const ChooseSchool = () => {
 
     let escolas = { //a escola tem q ter o mesmo nome do ID
         sartre: [
-            <NavLink to={'/CME/sartre/1ano'} key={"1ano"}>1º Ano</NavLink>,
-            <NavLink to={'/CME/sartre/2ano'} key={"2ano"}>2º Ano</NavLink>,
-            <NavLink to={'/CME/sartre/highschool'} key={"highschool"}>Highschool</NavLink>,
+            <NavLink to={routes.sartre1ano} key={"1ano"}>1º Ano</NavLink>,
+            <NavLink to={routes.sartre2ano} key={"2ano"}>2º Ano</NavLink>,
+            <NavLink to={routes.sartreHS} key={"highschool"}>Highschool</NavLink>,
         ],
         escolaTeste: [
-        <NavLink to={'/CME/escola-teste/ano-teste'} key={"1ano"}>Ano Teste</NavLink>,
+        <NavLink to={routes.escolaTeste} key={"escolaTeste"}>Ano Teste</NavLink>,
         ],
         sp: [],
         anchieta: [],

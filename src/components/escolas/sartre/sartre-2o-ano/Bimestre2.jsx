@@ -55,23 +55,23 @@ const Bimestre2 = (props) => {
             //ou
             //se provasMateria[j].getAttribute("name") menor que limiteNotas[provasMateria[j].getAttribute("name")].minimo
             //se sim, fazer algo
-            
+
             for (let j = 0; j < provasMateria.length; j++) {
                 if (provasMateria[j].value == "") {
                     materias[materiasArray[i]][provasMateria[j].getAttribute("name")] = 0;
-                } else if(provasMateria[j].value > provasInfo[provasMateria[j].getAttribute("name")].maximo) {
+                } else if (provasMateria[j].value > provasInfo[provasMateria[j].getAttribute("name")].maximo) {
                     notaAcimaDoMaximo(provasMateria[j], provasMateria[j].getAttribute("name"), materiasArray[i], provasInfo[provasMateria[j].getAttribute("name")].maximo);
-                } else if(provasMateria[j].value < provasInfo[provasMateria[j].getAttribute("name")].minimo) {
+                } else if (provasMateria[j].value < provasInfo[provasMateria[j].getAttribute("name")].minimo) {
                     notaAbaixoDoMinimo(provasMateria[j], provasMateria[j].getAttribute("name"), materiasArray[i], provasInfo[provasMateria[j].getAttribute("name")].minimo);
                 } else {
                     materias[materiasArray[i]][provasMateria[j].getAttribute("name")] = Number(provasMateria[j].value);
                 }
 
                 if (provasMateria[j].value <= provasInfo[provasMateria[j].getAttribute("name")].maximo && provasMateria[j].value >= provasInfo[provasMateria[j].getAttribute("name")].minimo && document.querySelector(`input.${materiasArray[i]}[name="${provasMateria[j].getAttribute("name")}"]`).previousSibling.innerText != provasInfo[provasMateria[j].getAttribute("name")].nome) {
-                    
+
                     notaPermitida(provasMateria[j].getAttribute("name"), materiasArray[i]);
                 }
-                
+
             }
         }
 
@@ -84,7 +84,7 @@ const Bimestre2 = (props) => {
         let calcNormal = '((materias[materiasArray[i]]["adHum"] + materias.hum.hum) * 4 + (materias[materiasArray[i]]["ao"] * 4) + materias[materiasArray[i]]["avEnem"] + materias[materiasArray[i]]["flAZ"]) / 10';
         let calcSemHumanidades = '((materias[materiasArray[i]]["ad"] * 4) + (materias[materiasArray[i]]["ao"] * 4) + materias[materiasArray[i]]["avEnem"] + materias[materiasArray[i]]["flAZ"]) / 10';
         let calcRedacao = '((materias[materiasArray[i]]["av1"] + materias.hum.hum) + materias[materiasArray[i]]["av2"]) / 2';
-        
+
 
         for (let i = 0; i < materiasArray.length; i++) {
             //transformar isso aqui em um switch case algum dia
@@ -100,13 +100,13 @@ const Bimestre2 = (props) => {
         }
 
         props.setNotas(newNotas)
-    
+
     }
 
     function notaPermitida(provaNome, materiaNome) {
 
         //isso aqui ta um shitty code, tenho q concertar depois
-        if((materiaNome == "fil" || materiaNome == "soc") && provaNome == "adHum") {
+        if ((materiaNome == "fil" || materiaNome == "soc") && provaNome == "adHum") {
             document.querySelector(`input.${materiaNome}[name="${provaNome}"]`).previousSibling.innerText = "AP";
         } else {
             document.querySelector(`input.${materiaNome}[name="${provaNome}"]`).previousSibling.innerText = provasInfo[provaNome].nome;
@@ -137,6 +137,21 @@ const Bimestre2 = (props) => {
         document.querySelector(`input.${materiaNome}[name="${provaNome}"]`).style.backgroundColor = "#ffcccc"; // vermelho claro
     }
 
+    //limpa os inputs quando o componente é montado ou quando o resetSignal muda (botão de reiniciar está no componente pai)
+    useEffect(() => {
+        limparInputs();
+    }, [props.resetSignal]);
+
+    function limparInputs() {
+        let inputs = document.querySelectorAll('input[type="number"]');
+
+        inputs.forEach((input) => {
+            input.value = "";
+        });
+
+        pegarNotas();
+    }
+
     return (
         <>
             <div className="responsiveTable">
@@ -154,7 +169,7 @@ const Bimestre2 = (props) => {
                         </tr>
                     </thead>
                     <tbody onChange={pegarNotas}>
-                        
+
                         <tr>
                             <td><div>AD </div><input type="number" className="port" name="adHum" /></td>
                             <td><div>AD </div><input type="number" className="hist" name="adHum" /></td>
@@ -164,7 +179,7 @@ const Bimestre2 = (props) => {
                             <td><div>AD </div><input type="number" className="qui" name="ad" /></td>
                             <td><div>AD </div><input type="number" className="bio" name="ad" /></td>
                         </tr>
-                            
+
                         <tr>
                             <td><div>AO </div><input type="number" className="port" name="ao" /></td>
                             <td><div>AO </div><input type="number" className="hist" name="ao" /></td>
@@ -174,7 +189,7 @@ const Bimestre2 = (props) => {
                             <td><div>AO </div><input type="number" className="qui" name="ao" /></td>
                             <td><div>AO </div><input type="number" className="bio" name="ao" /></td>
                         </tr>
-                            
+
                         <tr>
                             <td><div>Av. Enem </div><input type="number" className="port" name="avEnem" /></td>
                             <td><div>Av. Enem </div><input type="number" className="hist" name="avEnem" /></td>
@@ -184,7 +199,7 @@ const Bimestre2 = (props) => {
                             <td><div>Av. Enem </div><input type="number" className="qui" name="avEnem" /></td>
                             <td><div>Av. Enem </div><input type="number" className="bio" name="avEnem" /></td>
                         </tr>
-                            
+
                         <tr>
                             <td><div>Folha Az </div><input type="number" className="port" name="flAZ" /></td>
                             <td><div>Folha Az </div><input type="number" className="hist" name="flAZ" /></td>

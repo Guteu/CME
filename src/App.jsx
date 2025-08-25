@@ -17,7 +17,7 @@ function App() {
         <div style={background}>
             <header>
                 <h1>Calculador de médias escolares</h1>
-                <h2>Versão 2.0.0</h2>
+                <h2>Versão 2.1.0</h2>
             </header>
             <main>
                 <ChooseSchool />

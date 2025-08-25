@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { use } from 'react';
 
 const Bimestre1 = (props) => {
 
@@ -127,6 +128,21 @@ const Bimestre1 = (props) => {
         document.querySelector(`input.${materiaNome}[name="${provaNome}"]`).previousSibling.innerText = `${NOTA} está abaixo do mínimo (${notaMinima})`;
         document.querySelector(`input.${materiaNome}[name="${provaNome}"]`).previousSibling.style.fontSize = "0.6em"; // reduz o tamanho da fonte
         document.querySelector(`input.${materiaNome}[name="${provaNome}"]`).style.backgroundColor = "#ffcccc"; // vermelho claro
+    }
+
+    //limpa os inputs quando o componente é montado ou quando o resetSignal muda (botão de reiniciar está no componente pai)
+    useEffect(() => {
+        limparInputs();
+    }, [props.resetSignal]);
+
+    function limparInputs() {
+        let inputs = document.querySelectorAll('input[type="number"]');
+
+        inputs.forEach((input) => {
+            input.value = "";
+        });
+
+        pegarNotas();
     }
 
     return (

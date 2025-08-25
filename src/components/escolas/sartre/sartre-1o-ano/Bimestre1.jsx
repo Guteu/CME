@@ -129,6 +129,21 @@ const Bimestre1 = (props) => {
         document.querySelector(`input.${materiaNome}[name="${provaNome}"]`).style.backgroundColor = "#ffcccc"; // vermelho claro
     }
 
+    //limpa os inputs quando o componente é montado ou quando o resetSignal muda (botão de reiniciar está no componente pai)
+    useEffect(() => {
+        limparInputs();
+    }, [props.resetSignal]);
+
+    function limparInputs() {
+        let inputs = document.querySelectorAll('input[type="number"]');
+
+        inputs.forEach((input) => {
+            input.value = "";
+        });
+
+        pegarNotas();
+    }
+
     return (
         <>
             <div className="responsiveTable">
